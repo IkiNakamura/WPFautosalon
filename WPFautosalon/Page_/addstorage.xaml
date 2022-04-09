@@ -1,0 +1,32 @@
+﻿<Page x:Class="WPFautosalon.Page_.addstorage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFautosalon.Page_"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="addstorage">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="800"/>
+		</Grid.ColumnDefinitions>
+		<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Название склада" VerticalAlignment="Top" Height="16" Width="93"/>
+		<TextBox Height="23" Margin="220,9,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,39,0,0" TextWrapping="Wrap" Text="Название склада" VerticalAlignment="Top" Height="16" Width="93"/>
+		<TextBox Height="23" Margin="220,38,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="Название склада" VerticalAlignment="Top" Height="16" Width="93"/>
+		<TextBox Height="23" Margin="220,66,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,95,0,0" TextWrapping="Wrap" Text="Название склада" VerticalAlignment="Top" Height="16" Width="93"/>
+		<TextBox Height="23" Margin="220,94,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="Название склада" VerticalAlignment="Top" Height="16" Width="93"/>
+		<TextBox Height="23" Margin="220,122,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,151,0,0" TextWrapping="Wrap" Text="Название склада" VerticalAlignment="Top" Height="16" Width="93"/>
+		<TextBox Height="23" Margin="220,150,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+	</Grid>
+</Page>

@@ -1,0 +1,45 @@
+﻿<Page x:Class="WPFautosalon.Page_.addeditusers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFautosalon.Page_"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="addeditusers">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="231*"/>
+            <ColumnDefinition Width="569*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Пользователь" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Роль" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Контакты" VerticalAlignment="Top"/>
+        <TextBox x:Name="name" Grid.Column="1" Height="23" Margin="10,9,10,0" TextWrapping="Wrap" Text="{Binding Имя}" VerticalAlignment="Top" Grid.Row="1" Background="White" UndoLimit="25"/>
+        <TextBox x:Name="lastname" Grid.Column="1" Height="23" Margin="10,10,10,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Фамилия}" VerticalAlignment="Top" UndoLimit="50"/>
+        <TextBox x:Name="subname" Grid.Column="1" Height="23" Margin="10,10,10,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Отчество}" VerticalAlignment="Top" UndoLimit="25"/>
+        <TextBox x:Name="login" Grid.Column="1" Height="23" Margin="10,10,10,0" Grid.Row="5" TextWrapping="Wrap" Text="{Binding Логин}" VerticalAlignment="Top" UndoLimit="50"/>
+        <TextBox x:Name="password" Grid.Column="1" Height="23" Margin="10,10,10,0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Пароль}" VerticalAlignment="Top" UndoLimit="50"/>
+        <TextBox x:Name="contacts" Grid.Column="1" Height="23" Margin="10,10,10,0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding Контакты}" VerticalAlignment="Top"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="11,10,0,0" Grid.Row="8" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <ComboBox x:Name="CBrole" SelectedItem="{Binding Роли}" DisplayMemberPath="Название" Grid.Column="1" Margin="10,10,10,0" Grid.Row="4" VerticalAlignment="Top"></ComboBox>
+
+    </Grid>
+</Page>

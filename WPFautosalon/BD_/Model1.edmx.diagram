@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ed18b0abd71494ca99b5d4c480f4f2c" Name="Diagram1">
+        <EntityTypeShape EntityType="АвтосалонModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Заказы" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Комплектации" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Место_на_складе" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Модели_ТС" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Опции" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Пользователи" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.ПТС" Width="1.5" PointX="3.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Роли" Width="1.5" PointX="3.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Склад" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.Строка_Комплектации" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="АвтосалонModel.ТС" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="АвтосалонModel.FK_Заказы_Пользователи" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_Заказы_ТС" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_Строка_Комплектации_Комплектации" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_ТС_Комплектации" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_Место_на_складе_Склад" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_Место_на_складе_ТС" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_ТС_Модели_ТС" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_Строка_Комплектации_Опции" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_Пользователи_Роли" ManuallyRouted="false" />
+        <AssociationConnector Association="АвтосалонModel.FK_ТС_ПТС" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

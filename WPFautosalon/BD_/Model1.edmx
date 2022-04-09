@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище АвтосалонModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Заказы">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Клиент" Type="int" Nullable="false" />
+          <Property Name="ТС" Type="nchar" MaxLength="17" Nullable="false" />
+          <Property Name="Пункт_Назначения" Type="text" />
+        </EntityType>
+        <EntityType Name="Комплектации">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Описание" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Место_на_складе">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Склад" Type="int" Nullable="false" />
+          <Property Name="Тип_Ячейки" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Содержимое" Type="nchar" MaxLength="17" />
+          <Property Name="Количество" Type="int" />
+        </EntityType>
+        <EntityType Name="Модели_ТС">
+          <Key>
+            <PropertyRef Name="Уид_Модель" />
+          </Key>
+          <Property Name="Уид_Модель" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Описание" Type="ntext" Nullable="false" />
+          <Property Name="Количество" Type="int" Nullable="false" />
+          <Property Name="Ресурсы" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Опции">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Описание" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Пользователи">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Имя" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Фамилия" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Отчество" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Роль" Type="int" Nullable="false" />
+          <Property Name="Логин" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Пароль" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Контакты" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ПТС">
+          <Key>
+            <PropertyRef Name="VIN" />
+          </Key>
+          <Property Name="VIN" Type="nchar" MaxLength="17" Nullable="false" />
+          <Property Name="Серия_Номер" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Марка" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Модель" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Тип_ТС" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Категория" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Год_Выпуска" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Модель_Двигатель" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Номер_Двигатель" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Шасси" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Кузов" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Цвет_Кузова" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Мощность_Двигатель" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Объем_Двигатель" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Макс_Масса" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Масса_Без_Нагрузки" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Страна_Изготовитель" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Экокласс" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Страна_Вывоза" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Серия_Номер_Таможни" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Таможенные_Ограничения" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ФИО_Собственника" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Адрес" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Организация_Выдавшая_ПТС" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Адрес_Организации" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Дата_Выдачи" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Роли">
+          <Key>
+            <PropertyRef Name="Уид_Роли" />
+          </Key>
+          <Property Name="Уид_Роли" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Права_Сотрудника" Type="bit" />
+          <Property Name="Права_Администратора" Type="bit" />
+        </EntityType>
+        <EntityType Name="Склад">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Адрес" Type="ntext" Nullable="false" />
+          <Property Name="Тип" Type="nchar" MaxLength="10" />
+          <Property Name="Вместимость" Type="int" />
+          <Property Name="Заполнено" Type="int" />
+        </EntityType>
+        <EntityType Name="Строка_Комплектации">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Опция" Type="int" Nullable="false" />
+          <Property Name="Комплектация" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ТС">
+          <Key>
+            <PropertyRef Name="Птс" />
+          </Key>
+          <Property Name="Птс" Type="nchar" MaxLength="17" Nullable="false" />
+          <Property Name="Модель" Type="int" Nullable="false" />
+          <Property Name="Комплектация" Type="int" Nullable="false" />
+          <Property Name="Цена" Type="money" />
+        </EntityType>
+        <Association Name="FK_Заказы_Пользователи">
+          <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="1" />
+          <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пользователи">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Заказы">
+              <PropertyRef Name="Клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказы_ТС">
+          <End Role="ТС" Type="Self.ТС" Multiplicity="1" />
+          <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТС">
+              <PropertyRef Name="Птс" />
+            </Principal>
+            <Dependent Role="Заказы">
+              <PropertyRef Name="ТС" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Место_на_складе_Склад">
+          <End Role="Склад" Type="Self.Склад" Multiplicity="1" />
+          <End Role="Место_на_складе" Type="Self.Место_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Место_на_складе">
+              <PropertyRef Name="Склад" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Место_на_складе_ТС">
+          <End Role="ТС" Type="Self.ТС" Multiplicity="0..1" />
+          <End Role="Место_на_складе" Type="Self.Место_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТС">
+              <PropertyRef Name="Птс" />
+            </Principal>
+            <Dependent Role="Место_на_складе">
+              <PropertyRef Name="Содержимое" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Пользователи_Роли">
+          <End Role="Роли" Type="Self.Роли" Multiplicity="1" />
+          <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Роли">
+              <PropertyRef Name="Уид_Роли" />
+            </Principal>
+            <Dependent Role="Пользователи">
+              <PropertyRef Name="Роль" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Строка_Комплектации_Комплектации">
+          <End Role="Комплектации" Type="Self.Комплектации" Multiplicity="1" />
+          <End Role="Строка_Комплектации" Type="Self.Строка_Комплектации" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Комплектации">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Строка_Комплектации">
+              <PropertyRef Name="Комплектация" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Строка_Комплектации_Опции">
+          <End Role="Опции" Type="Self.Опции" Multiplicity="1" />
+          <End Role="Строка_Комплектации" Type="Self.Строка_Комплектации" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Опции">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Строка_Комплектации">
+              <PropertyRef Name="Опция" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ТС_Комплектации">
+          <End Role="Комплектации" Type="Self.Комплектации" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Комплектации">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="Комплектация" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ТС_Модели_ТС">
+          <End Role="Модели_ТС" Type="Self.Модели_ТС" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_ТС">
+              <PropertyRef Name="Уид_Модель" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="Модель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ТС_ПТС">
+          <End Role="ПТС" Type="Self.ПТС" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ПТС">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="Птс" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище АвтосалонModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заказы" EntityType="Self.Заказы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Комплектации" EntityType="Self.Комплектации" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Место_на_складе" EntityType="Self.Место_на_складе" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Модели_ТС" EntityType="Self.Модели_ТС" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Опции" EntityType="Self.Опции" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пользователи" EntityType="Self.Пользователи" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ПТС" EntityType="Self.ПТС" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Роли" EntityType="Self.Роли" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Склад" EntityType="Self.Склад" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Строка_Комплектации" EntityType="Self.Строка_Комплектации" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ТС" EntityType="Self.ТС" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Заказы_Пользователи" Association="Self.FK_Заказы_Пользователи">
+            <End Role="Пользователи" EntitySet="Пользователи" />
+            <End Role="Заказы" EntitySet="Заказы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказы_ТС" Association="Self.FK_Заказы_ТС">
+            <End Role="ТС" EntitySet="ТС" />
+            <End Role="Заказы" EntitySet="Заказы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Место_на_складе_Склад" Association="Self.FK_Место_на_складе_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="Место_на_складе" EntitySet="Место_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Место_на_складе_ТС" Association="Self.FK_Место_на_складе_ТС">
+            <End Role="ТС" EntitySet="ТС" />
+            <End Role="Место_на_складе" EntitySet="Место_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пользователи_Роли" Association="Self.FK_Пользователи_Роли">
+            <End Role="Роли" EntitySet="Роли" />
+            <End Role="Пользователи" EntitySet="Пользователи" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Строка_Комплектации_Комплектации" Association="Self.FK_Строка_Комплектации_Комплектации">
+            <End Role="Комплектации" EntitySet="Комплектации" />
+            <End Role="Строка_Комплектации" EntitySet="Строка_Комплектации" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Строка_Комплектации_Опции" Association="Self.FK_Строка_Комплектации_Опции">
+            <End Role="Опции" EntitySet="Опции" />
+            <End Role="Строка_Комплектации" EntitySet="Строка_Комплектации" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ТС_Комплектации" Association="Self.FK_ТС_Комплектации">
+            <End Role="Комплектации" EntitySet="Комплектации" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ТС_Модели_ТС" Association="Self.FK_ТС_Модели_ТС">
+            <End Role="Модели_ТС" EntitySet="Модели_ТС" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ТС_ПТС" Association="Self.FK_ТС_ПТС">
+            <End Role="ПТС" EntitySet="ПТС" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="АвтосалонModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Заказы">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Клиент" Type="Int32" Nullable="false" />
+          <Property Name="ТС" Type="String" MaxLength="17" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Пункт_Назначения" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Пользователи" Relationship="Self.FK_Заказы_Пользователи" FromRole="Заказы" ToRole="Пользователи" />
+          <NavigationProperty Name="ТС1" Relationship="Self.FK_Заказы_ТС" FromRole="Заказы" ToRole="ТС" />
+        </EntityType>
+        <EntityType Name="Комплектации">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Строка_Комплектации" Relationship="Self.FK_Строка_Комплектации_Комплектации" FromRole="Комплектации" ToRole="Строка_Комплектации" />
+          <NavigationProperty Name="ТС" Relationship="Self.FK_ТС_Комплектации" FromRole="Комплектации" ToRole="ТС" />
+        </EntityType>
+        <EntityType Name="Место_на_складе">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Склад" Type="Int32" Nullable="false" />
+          <Property Name="Тип_Ячейки" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Содержимое" Type="String" MaxLength="17" FixedLength="true" Unicode="true" />
+          <Property Name="Количество" Type="Int32" />
+          <NavigationProperty Name="Склад1" Relationship="Self.FK_Место_на_складе_Склад" FromRole="Место_на_складе" ToRole="Склад" />
+          <NavigationProperty Name="ТС" Relationship="Self.FK_Место_на_складе_ТС" FromRole="Место_на_складе" ToRole="ТС" />
+        </EntityType>
+        <EntityType Name="Модели_ТС">
+          <Key>
+            <PropertyRef Name="Уид_Модель" />
+          </Key>
+          <Property Name="Уид_Модель" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Количество" Type="Int32" Nullable="false" />
+          <Property Name="Ресурсы" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ТС" Relationship="Self.FK_ТС_Модели_ТС" FromRole="Модели_ТС" ToRole="ТС" />
+        </EntityType>
+        <EntityType Name="Опции">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Строка_Комплектации" Relationship="Self.FK_Строка_Комплектации_Опции" FromRole="Опции" ToRole="Строка_Комплектации" />
+        </EntityType>
+        <EntityType Name="Пользователи">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Имя" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Роль" Type="Int32" Nullable="false" />
+          <Property Name="Логин" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Пароль" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Контакты" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заказы" Relationship="Self.FK_Заказы_Пользователи" FromRole="Пользователи" ToRole="Заказы" />
+          <NavigationProperty Name="Роли" Relationship="Self.FK_Пользователи_Роли" FromRole="Пользователи" ToRole="Роли" />
+        </EntityType>
+        <EntityType Name="ПТС">
+          <Key>
+            <PropertyRef Name="VIN" />
+          </Key>
+          <Property Name="VIN" Type="String" MaxLength="17" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Серия_Номер" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Марка" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Модель" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Тип_ТС" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Категория" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Год_Выпуска" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Модель_Двигатель" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Номер_Двигатель" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Шасси" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Кузов" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Цвет_Кузова" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Мощность_Двигатель" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Объем_Двигатель" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Макс_Масса" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Масса_Без_Нагрузки" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Страна_Изготовитель" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Экокласс" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Страна_Вывоза" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Серия_Номер_Таможни" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Таможенные_Ограничения" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ФИО_Собственника" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Адрес" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Организация_Выдавшая_ПТС" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Адрес_Организации" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Дата_Выдачи" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ТС" Relationship="Self.FK_ТС_ПТС" FromRole="ПТС" ToRole="ТС" />
+        </EntityType>
+        <EntityType Name="Роли">
+          <Key>
+            <PropertyRef Name="Уид_Роли" />
+          </Key>
+          <Property Name="Уид_Роли" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Права_Сотрудника" Type="Boolean" />
+          <Property Name="Права_Администратора" Type="Boolean" />
+          <NavigationProperty Name="Пользователи" Relationship="Self.FK_Пользователи_Роли" FromRole="Роли" ToRole="Пользователи" />
+        </EntityType>
+        <EntityType Name="Склад">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Адрес" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Тип" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Вместимость" Type="Int32" />
+          <Property Name="Заполнено" Type="Int32" />
+          <NavigationProperty Name="Место_на_складе" Relationship="Self.FK_Место_на_складе_Склад" FromRole="Склад" ToRole="Место_на_складе" />
+        </EntityType>
+        <EntityType Name="Строка_Комплектации">
+          <Key>
+            <PropertyRef Name="Уид" />
+          </Key>
+          <Property Name="Уид" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Опция" Type="Int32" Nullable="false" />
+          <Property Name="Комплектация" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Комплектации" Relationship="Self.FK_Строка_Комплектации_Комплектации" FromRole="Строка_Комплектации" ToRole="Комплектации" />
+          <NavigationProperty Name="Опции" Relationship="Self.FK_Строка_Комплектации_Опции" FromRole="Строка_Комплектации" ToRole="Опции" />
+        </EntityType>
+        <EntityType Name="ТС">
+          <Key>
+            <PropertyRef Name="Птс" />
+          </Key>
+          <Property Name="Птс" Type="String" MaxLength="17" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Модель" Type="Int32" Nullable="false" />
+          <Property Name="Комплектация" Type="Int32" Nullable="false" />
+          <Property Name="Цена" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Заказы" Relationship="Self.FK_Заказы_ТС" FromRole="ТС" ToRole="Заказы" />
+          <NavigationProperty Name="Комплектации" Relationship="Self.FK_ТС_Комплектации" FromRole="ТС" ToRole="Комплектации" />
+          <NavigationProperty Name="Место_на_складе" Relationship="Self.FK_Место_на_складе_ТС" FromRole="ТС" ToRole="Место_на_складе" />
+          <NavigationProperty Name="Модели_ТС" Relationship="Self.FK_ТС_Модели_ТС" FromRole="ТС" ToRole="Модели_ТС" />
+          <NavigationProperty Name="ПТС1" Relationship="Self.FK_ТС_ПТС" FromRole="ТС" ToRole="ПТС" />
+        </EntityType>
+        <Association Name="FK_Заказы_Пользователи">
+          <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="1" />
+          <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пользователи">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Заказы">
+              <PropertyRef Name="Клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказы_ТС">
+          <End Role="ТС" Type="Self.ТС" Multiplicity="1" />
+          <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТС">
+              <PropertyRef Name="Птс" />
+            </Principal>
+            <Dependent Role="Заказы">
+              <PropertyRef Name="ТС" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Строка_Комплектации_Комплектации">
+          <End Role="Комплектации" Type="Self.Комплектации" Multiplicity="1" />
+          <End Role="Строка_Комплектации" Type="Self.Строка_Комплектации" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Комплектации">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Строка_Комплектации">
+              <PropertyRef Name="Комплектация" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ТС_Комплектации">
+          <End Role="Комплектации" Type="Self.Комплектации" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Комплектации">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="Комплектация" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Место_на_складе_Склад">
+          <End Role="Склад" Type="Self.Склад" Multiplicity="1" />
+          <End Role="Место_на_складе" Type="Self.Место_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Место_на_складе">
+              <PropertyRef Name="Склад" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Место_на_складе_ТС">
+          <End Role="ТС" Type="Self.ТС" Multiplicity="0..1" />
+          <End Role="Место_на_складе" Type="Self.Место_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТС">
+              <PropertyRef Name="Птс" />
+            </Principal>
+            <Dependent Role="Место_на_складе">
+              <PropertyRef Name="Содержимое" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ТС_Модели_ТС">
+          <End Role="Модели_ТС" Type="Self.Модели_ТС" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_ТС">
+              <PropertyRef Name="Уид_Модель" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="Модель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Строка_Комплектации_Опции">
+          <End Role="Опции" Type="Self.Опции" Multiplicity="1" />
+          <End Role="Строка_Комплектации" Type="Self.Строка_Комплектации" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Опции">
+              <PropertyRef Name="Уид" />
+            </Principal>
+            <Dependent Role="Строка_Комплектации">
+              <PropertyRef Name="Опция" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Пользователи_Роли">
+          <End Role="Роли" Type="Self.Роли" Multiplicity="1" />
+          <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Роли">
+              <PropertyRef Name="Уид_Роли" />
+            </Principal>
+            <Dependent Role="Пользователи">
+              <PropertyRef Name="Роль" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ТС_ПТС">
+          <End Role="ПТС" Type="Self.ПТС" Multiplicity="1" />
+          <End Role="ТС" Type="Self.ТС" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ПТС">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="ТС">
+              <PropertyRef Name="Птс" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="АвтосалонEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Заказы" EntityType="Self.Заказы" />
+          <EntitySet Name="Комплектации" EntityType="Self.Комплектации" />
+          <EntitySet Name="Место_на_складе" EntityType="Self.Место_на_складе" />
+          <EntitySet Name="Модели_ТС" EntityType="Self.Модели_ТС" />
+          <EntitySet Name="Опции" EntityType="Self.Опции" />
+          <EntitySet Name="Пользователи" EntityType="Self.Пользователи" />
+          <EntitySet Name="ПТС" EntityType="Self.ПТС" />
+          <EntitySet Name="Роли" EntityType="Self.Роли" />
+          <EntitySet Name="Склад" EntityType="Self.Склад" />
+          <EntitySet Name="Строка_Комплектации" EntityType="Self.Строка_Комплектации" />
+          <EntitySet Name="ТС" EntityType="Self.ТС" />
+          <AssociationSet Name="FK_Заказы_Пользователи" Association="Self.FK_Заказы_Пользователи">
+            <End Role="Пользователи" EntitySet="Пользователи" />
+            <End Role="Заказы" EntitySet="Заказы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказы_ТС" Association="Self.FK_Заказы_ТС">
+            <End Role="ТС" EntitySet="ТС" />
+            <End Role="Заказы" EntitySet="Заказы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Строка_Комплектации_Комплектации" Association="Self.FK_Строка_Комплектации_Комплектации">
+            <End Role="Комплектации" EntitySet="Комплектации" />
+            <End Role="Строка_Комплектации" EntitySet="Строка_Комплектации" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ТС_Комплектации" Association="Self.FK_ТС_Комплектации">
+            <End Role="Комплектации" EntitySet="Комплектации" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Место_на_складе_Склад" Association="Self.FK_Место_на_складе_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="Место_на_складе" EntitySet="Место_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Место_на_складе_ТС" Association="Self.FK_Место_на_складе_ТС">
+            <End Role="ТС" EntitySet="ТС" />
+            <End Role="Место_на_складе" EntitySet="Место_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ТС_Модели_ТС" Association="Self.FK_ТС_Модели_ТС">
+            <End Role="Модели_ТС" EntitySet="Модели_ТС" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Строка_Комплектации_Опции" Association="Self.FK_Строка_Комплектации_Опции">
+            <End Role="Опции" EntitySet="Опции" />
+            <End Role="Строка_Комплектации" EntitySet="Строка_Комплектации" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пользователи_Роли" Association="Self.FK_Пользователи_Роли">
+            <End Role="Роли" EntitySet="Роли" />
+            <End Role="Пользователи" EntitySet="Пользователи" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ТС_ПТС" Association="Self.FK_ТС_ПТС">
+            <End Role="ПТС" EntitySet="ПТС" />
+            <End Role="ТС" EntitySet="ТС" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище АвтосалонModelContainer" CdmEntityContainer="АвтосалонEntities2">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="АвтосалонModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заказы">
+            <EntityTypeMapping TypeName="АвтосалонModel.Заказы">
+              <MappingFragment StoreEntitySet="Заказы">
+                <ScalarProperty Name="Уид" ColumnName="Уид" />
+                <ScalarProperty Name="Клиент" ColumnName="Клиент" />
+                <ScalarProperty Name="ТС" ColumnName="ТС" />
+                <ScalarProperty Name="Пункт_Назначения" ColumnName="Пункт_Назначения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Комплектации">
+            <EntityTypeMapping TypeName="АвтосалонModel.Комплектации">
+              <MappingFragment StoreEntitySet="Комплектации">
+                <ScalarProperty Name="Уид" ColumnName="Уид" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Место_на_складе">
+            <EntityTypeMapping TypeName="АвтосалонModel.Место_на_складе">
+              <MappingFragment StoreEntitySet="Место_на_складе">
+                <ScalarProperty Name="Уид" ColumnName="Уид" />
+                <ScalarProperty Name="Склад" ColumnName="Склад" />
+                <ScalarProperty Name="Тип_Ячейки" ColumnName="Тип_Ячейки" />
+                <ScalarProperty Name="Содержимое" ColumnName="Содержимое" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Модели_ТС">
+            <EntityTypeMapping TypeName="АвтосалонModel.Модели_ТС">
+              <MappingFragment StoreEntitySet="Модели_ТС">
+                <ScalarProperty Name="Уид_Модель" ColumnName="Уид_Модель" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="Ресурсы" ColumnName="Ресурсы" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Опции">
+            <EntityTypeMapping TypeName="АвтосалонModel.Опции">
+              <MappingFragment StoreEntitySet="Опции">
+                <ScalarProperty Name="Уид" ColumnName="Уид" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пользователи">
+            <EntityTypeMapping TypeName="АвтосалонModel.Пользователи">
+              <MappingFragment StoreEntitySet="Пользователи">
+                <ScalarProperty Name="Уид" ColumnName="Уид" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Роль" ColumnName="Роль" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="Контакты" ColumnName="Контакты" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПТС">
+            <EntityTypeMapping TypeName="АвтосалонModel.ПТС">
+              <MappingFragment StoreEntitySet="ПТС">
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="Серия_Номер" ColumnName="Серия_Номер" />
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="Модель" ColumnName="Модель" />
+                <ScalarProperty Name="Тип_ТС" ColumnName="Тип_ТС" />
+                <ScalarProperty Name="Категория" ColumnName="Категория" />
+                <ScalarProperty Name="Год_Выпуска" ColumnName="Год_Выпуска" />
+                <ScalarProperty Name="Модель_Двигатель" ColumnName="Модель_Двигатель" />
+                <ScalarProperty Name="Номер_Двигатель" ColumnName="Номер_Двигатель" />
+                <ScalarProperty Name="Шасси" ColumnName="Шасси" />
+                <ScalarProperty Name="Кузов" ColumnName="Кузов" />
+                <ScalarProperty Name="Цвет_Кузова" ColumnName="Цвет_Кузова" />
+                <ScalarProperty Name="Мощность_Двигатель" ColumnName="Мощность_Двигатель" />
+                <ScalarProperty Name="Объем_Двигатель" ColumnName="Объем_Двигатель" />
+                <ScalarProperty Name="Макс_Масса" ColumnName="Макс_Масса" />
+                <ScalarProperty Name="Масса_Без_Нагрузки" ColumnName="Масса_Без_Нагрузки" />
+                <ScalarProperty Name="Страна_Изготовитель" ColumnName="Страна_Изготовитель" />
+                <ScalarProperty Name="Экокласс" ColumnName="Экокласс" />
+                <ScalarProperty Name="Страна_Вывоза" ColumnName="Страна_Вывоза" />
+                <ScalarProperty Name="Серия_Номер_Таможни" ColumnName="Серия_Номер_Таможни" />
+                <ScalarProperty Name="Таможенные_Ограничения" ColumnName="Таможенные_Ограничения" />
+                <ScalarProperty Name="ФИО_Собственника" ColumnName="ФИО_Собственника" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="Организация_Выдавшая_ПТС" ColumnName="Организация_Выдавшая_ПТС" />
+                <ScalarProperty Name="Адрес_Организации" ColumnName="Адрес_Организации" />
+                <ScalarProperty Name="Дата_Выдачи" ColumnName="Дата_Выдачи" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Роли">
+            <EntityTypeMapping TypeName="АвтосалонModel.Роли">
+              <MappingFragment StoreEntitySet="Роли">
+                <ScalarProperty Name="Уид_Роли" ColumnName="Уид_Роли" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="Права_Сотрудника" ColumnName="Права_Сотрудника" />
+                <ScalarProperty Name="Права_Администратора" ColumnName="Права_Администратора" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Склад">
+            <EntityTypeMapping TypeName="АвтосалонModel.Склад">
+              <MappingFragment StoreEntitySet="Склад">
+                <ScalarProperty Name="Уид" ColumnName="Уид" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="Тип" ColumnName="Тип" />
+                <ScalarProperty Name="Вместимость" ColumnName="Вместимость" />
+                <ScalarProperty Name="Заполнено" ColumnName="Заполнено" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Строка_Комплектации">
+            <EntityTypeMapping TypeName="АвтосалонModel.Строка_Комплектации">
+              <MappingFragment StoreEntitySet="Строка_Комплектации">
+                <ScalarProperty Name="Уид" ColumnName="Уид" />
+                <ScalarProperty Name="Опция" ColumnName="Опция" />
+                <ScalarProperty Name="Комплектация" ColumnName="Комплектация" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ТС">
+            <EntityTypeMapping TypeName="АвтосалонModel.ТС">
+              <MappingFragment StoreEntitySet="ТС">
+                <ScalarProperty Name="Птс" ColumnName="Птс" />
+                <ScalarProperty Name="Модель" ColumnName="Модель" />
+                <ScalarProperty Name="Комплектация" ColumnName="Комплектация" />
+                <ScalarProperty Name="Цена" ColumnName="Цена" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
