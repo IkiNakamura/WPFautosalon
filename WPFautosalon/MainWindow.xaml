@@ -28,7 +28,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Frame Name="mainframe" x:FieldModifier="public" Margin="70,50,10,10" Background="#FFEEEEEE"/>
+        <Frame NavigationUIVisibility="Hidden" ContentRendered="mainframe_ContentRendered" Name="mainframe" x:FieldModifier="public" Margin="70,50,10,10" Background="#FFEEEEEE"/>
+        <Button Name="goback" Content="Назад" Margin="707,16,10,0" VerticalAlignment="Top" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

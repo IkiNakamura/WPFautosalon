@@ -23,6 +23,7 @@ namespace WPFautosalon
         public MainWindow()
         {
             InitializeComponent();
+            mainframe.Navigate(new Page_.listusers());
             Manager.mainframe = mainframe;
         }
 
@@ -49,6 +50,21 @@ namespace WPFautosalon
             }
         }
 
-     
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Manager.mainframe.GoBack();
+        }
+
+        private void mainframe_ContentRendered(object sender, EventArgs e)
+        {
+            if (mainframe.CanGoBack)
+            {
+                goback.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                goback.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
